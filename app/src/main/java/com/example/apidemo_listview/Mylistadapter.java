@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -17,6 +18,7 @@ public class Mylistadapter extends BaseAdapter {
     ArrayList<Products> pro;
 
     LayoutInflater inflater;
+    private View.OnClickListener itemlisten;
 
     public Mylistadapter(Context c, ArrayList<Products> pro) {
         this.c = c;
@@ -41,6 +43,11 @@ public class Mylistadapter extends BaseAdapter {
         return position;
     }
 
+
+    public void setOnItemClickListener(View.OnClickListener itemClickListener) {
+        itemlisten = itemClickListener;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -62,7 +69,7 @@ public class Mylistadapter extends BaseAdapter {
         Picasso.get().load(pro.get(position).getPimg()).into(pimg);
         pname.setText(pro.get(position).getPname());
 
-
         return convertView;
     }
+
 }
